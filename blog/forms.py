@@ -8,6 +8,7 @@ from django.contrib.auth import get_user_model
 from .models import Tag, Post
 from django.core.exceptions import ValidationError
 
+
 class TagForm(forms.ModelForm):
 
     class Meta:
@@ -31,6 +32,7 @@ class TagForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
+
     class Meta:
         model = Post
         fields = ['title','slug','body','tags']

@@ -3,7 +3,7 @@ from .models import *
 from django.urls import reverse
 
 class ObjectDetailMixin:
-    
+
     model = None
     template = None
 
