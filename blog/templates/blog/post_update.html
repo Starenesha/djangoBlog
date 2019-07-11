@@ -7,6 +7,7 @@
 {% block content %}
     <form action="{{ post.get_update_url }}" method='post' >
         {% csrf_token %}
+
         {% for field in form %}
             <div class="form-group">
                 {% if field.errors %}
