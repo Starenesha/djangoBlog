@@ -3,6 +3,7 @@ from .models import *
 from django.urls import reverse
 
 class ObjectDetailMixin:
+    
     model = None
     template = None
 
@@ -48,6 +49,7 @@ class ObjectUpdateMixin:
             return redirect(new_obj)
         else:
             return render(request, self.template, context={'form':bound_form,self.__name__.lower():obj})
+
 
 
 class ObjectDeleteMixin:
