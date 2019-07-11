@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.http import HttpResponse
-from .models import Post, Tag
+from .models import *
 from django.views.generic import View
 from .utils import *
 from .forms import TagForm, PostForm
