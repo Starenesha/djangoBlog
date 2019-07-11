@@ -43,7 +43,9 @@ def post_list(request):
     }
     return render(request,'blog/index.html', context=context)
 
+
 def tags_list(request):
+
     tags = Tag.objects.all()
     return render(request,'blog/tags_list.html', context={'tags':tags})
 
@@ -104,9 +106,6 @@ from django.core.mail import EmailMessage
 
 def home(request):
     return HttpResponse("Home Page!")
-
-def hello(request):
-    return HttpResponse("Home Page")
 
 
 
