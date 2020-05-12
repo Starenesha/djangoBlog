@@ -13,15 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from blog import views
-from .views import  redirect_blog
+from .views import home
+from accounts.views import verify, signup_view
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    path('',redirect_blog),
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
- #   path('', views.home, name='home'),
+    #path('', views.home, name='home'),
     path('blog/',include('blog.urls')),
+    url(r'^verify/(?P<uuid>[a-z0-9\-]+)/', verify, name='verify'),
+    path('accounts/',include("accounts.urls")),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,7 +1,6 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 #from django.contrib.auth.models import User
-from .models import User
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.contrib.auth import get_user_model
@@ -30,12 +29,11 @@ class TagForm(forms.ModelForm):
         return new_slug
 
 
-
 class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title','slug','body','tags']
+        fields = ['title','slug','body','tags','article_image']
 
     widgets = {
         'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -52,13 +50,3 @@ class PostForm(forms.ModelForm):
         return new_slug
 
 
-User = get_user_model()
-
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
-    first_name = forms.CharField(max_length=30)
-    last_name = forms.CharField(max_length=30)
-
-    class Meta:
-        model = User
-        fields = ('email', 'first_name', 'last_name')
