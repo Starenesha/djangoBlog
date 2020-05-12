@@ -37,8 +37,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'accounts',
+    'crispy_forms',
+    'ckeditor',
+    'django_cleanup'
 ]
+
+MAILGUN_EMAIL = "sandbox2f3422c6dcef4a9d8a0435d5d2ccc5c9.mailgun.org"
+MAILGUN_API_KEY = "be1e1d1ea399e46861c35964fbd8f08e-0afbfc6c-229d693c"
+DEFAULT_FROM_EMAIL = "olga@starynenko.me"
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_HOST_PASSWORD = "52d8551f1d6db0b019d64f814b83e9f8-0afbfc6c-2f864977"
+EMAIL_HOST_USER = "postmaster@sandbox2f3422c6dcef4a9d8a0435d5d2ccc5c9.mailgun.org"
+EMAIL_PORT = 587
+EMAIL_TIMEOUT = 5
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -65,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -86,8 +100,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
-AUTH_USER_MODEL = 'blog.User'
-
+AUTH_USER_MODEL = 'accounts.User'
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -127,3 +140,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, 'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "removePlugins": "stylesheetparser",
+        "allowedContent" : True,
+        "width" : "100%",
+    }
+}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

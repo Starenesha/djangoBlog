@@ -1,9 +1,9 @@
 .admin-panel {
-    border: 1ps solid #999;
+    border: 1px solid #999;
     border-radius: 2px;
     position: fixed;
     right: 50px;
-    bottom: 30px;
+    bottom: 100px;
     opacity: 0.7;
     padding: 15px;
 }
@@ -21,4 +21,14 @@
 
 a.edit, a.delete {
     display: none;
+}
+
+.article {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 30px;
+    margin: 0;
+    padding-bottom: 30px;
+    color: #333;
 }
