@@ -4,6 +4,7 @@ from .utils import *
 from .forms import TagForm, PostForm
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 def post_list(request):

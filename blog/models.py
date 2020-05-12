@@ -33,6 +33,9 @@ class Post(models.Model):
     def get_delete_url(self):
         return reverse('post_delete_url', kwargs={'slug':self.slug})
 
+    def get_author(self):
+        return
+
     def __str__(self):
         return "{}".format(self.title)
 

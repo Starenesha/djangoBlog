@@ -13,7 +13,8 @@
         </div>
     </div>
 
-
-    <a href="{{ admin_obj.get_update_url }}" class="btn btn-light edit" style="{%if deteil %}display:block;{% endif %}">Edit</a>
-    <a href="{{ admin_obj.get_delete_url }}" class="btn btn-danger delete" style="{%if deteil %}display:block;{% endif %}">Delete</a>
+    {% if  request.user.id == admin_obj.author.id  %}
+        <a href="{{ admin_obj.get_update_url }}" class="btn btn-light edit" style="{%if detail %}display:block;{% endif %}">Edit</a>
+        <a href="{{ admin_obj.get_delete_url }}" class="btn btn-danger delete" style="{%if detail %}display:block;{% endif %}">Delete</a>
+    {% endif %}
 {% endblock %}

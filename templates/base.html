@@ -60,11 +60,12 @@
                         </nav>
                     {% endif %}
 
-
-        <div class="admin-panel align-items-center" >
-            <a href="/admin" class="btn btn-outline-info">Admin</a>
-            {% block admin-panel %} {% endblock %}
-        </div>
+        {% if request.user.is_authenticated %}
+            <div class="admin-panel align-items-center" >
+                <a href="/admin" class="btn btn-outline-info">Admin</a>
+                {% block admin-panel %} {% endblock %}
+            </div>
+        {% endif %}
 
         </div>
 
