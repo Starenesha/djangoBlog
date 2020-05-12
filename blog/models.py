@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from time import time
 from ckeditor.fields import RichTextField
 
+
 def gen_slug(s):
     new_slug = slugify(s, allow_unicode=True)
     return new_slug + "-" + str(int(time()))
@@ -14,8 +15,8 @@ class Post(models.Model):
     slug = models.SlugField(max_length=150, blank=True, unique=True)
     body = RichTextField()
     date_pub = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField('Tag',related_name='posts',
-                                  blank=True)
+    tags = models.ManyToManyField('Tag',related_name='posts', blank=True)
+    author = models.ForeignKey("accounts.User", on_delete=models.CASCADE, verbose_name="Author", default=1)
     article_image = models.FileField(blank=True, null=True, verbose_name="attachment")
 
     def get_absolute_url(self):

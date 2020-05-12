@@ -9,6 +9,10 @@
             <a href="{{ post.get_absolute_url }}"><h2 class="mt-4">{{ post.title }}</h2></a>
 
             <hr>
+             <!-- Author -->
+            <p >
+                <i>Author: {{post.author.first_name}} {{ post.author.last_name }}</i>
+            </p>
 
             <!-- Date/Time -->
             <p>{{ post.date_pub }}</p>
