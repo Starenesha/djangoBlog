@@ -44,14 +44,16 @@ INSTALLED_APPS = [
     'django_cleanup'
 ]
 
-MAILGUN_EMAIL = "sandbox2f3422c6dcef4a9d8a0435d5d2ccc5c9.mailgun.org"
-MAILGUN_API_KEY = "be1e1d1ea399e46861c35964fbd8f08e-0afbfc6c-229d693c"
-DEFAULT_FROM_EMAIL = "olga@starynenko.me"
-EMAIL_HOST = "smtp.mailgun.org"
-EMAIL_HOST_PASSWORD = "52d8551f1d6db0b019d64f814b83e9f8-0afbfc6c-2f864977"
-EMAIL_HOST_USER = "postmaster@sandbox2f3422c6dcef4a9d8a0435d5d2ccc5c9.mailgun.org"
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+#SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+
+SENDGRID_SANDBOX_MODE_IN_DEBUG=True
+SENDGRID_ECHO_TO_STDOUT=True
 EMAIL_PORT = 587
-EMAIL_TIMEOUT = 5
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_API_KEY')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
