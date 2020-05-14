@@ -14,4 +14,5 @@ urlpatterns = [
     path('tag/<str:slug>/update/', login_required(TagUpdate.as_view()), name='tag_update_url'),
     path('tag/<str:slug>/delete/', login_required(TagDelete.as_view()), name='tag_delete_url'),
     path('tag/<str:slug>/', TagDetail.as_view(), name='tag_detail_url'),
+    path('comment/<int:id>', addComment, name ="comment"),
 ]

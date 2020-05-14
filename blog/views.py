@@ -93,4 +93,16 @@ class TagDelete(ObjectDeleteMixin,View):
     template = 'blog/tag_delete_form.html'
 
 
+def addComment(request, id):
+    article = get_object_or_404(Post, id=id)
 
+    if request.method == "POST":
+        comment_author = request.POST.get("comment_author")
+        comment_content = request.POST.get("comment_content")
+
+        newComment = Comment(comment_author=comment_author, comment_content=comment_content)
+
+        newComment.article = article
+
+        newComment.save()
+    return redirect(reverse("post_detail_url", kwargs={"slug": article.slug}))
